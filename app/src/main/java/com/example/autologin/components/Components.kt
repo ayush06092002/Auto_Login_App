@@ -9,6 +9,7 @@ import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 
@@ -27,7 +28,7 @@ fun InputField(
     OutlinedTextField(
         value = valueState.value,
         onValueChange = { valueState.value = it },
-        label = { Text(text = labelId, style = TextStyle(color = Color.White))},
+        label = { Text(text = labelId, style = TextStyle(color = Color(0xFFffc857), fontWeight = FontWeight.Bold))},
         modifier = modifier,
         enabled = enabled,
         singleLine = isSingleLine,

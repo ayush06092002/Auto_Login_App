@@ -1,8 +1,7 @@
 package com.example.autologin.screens
 
 import android.annotation.SuppressLint
-import android.content.Context
-import android.util.Log
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -10,6 +9,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.material3.Button
+import androidx.compose.material3.Card
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -23,6 +23,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.example.autologin.components.InputField
@@ -32,12 +33,12 @@ import com.example.autologin.sharedPrefs.SharedPreferencesHelper
 @OptIn(ExperimentalMaterial3Api::class)
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun LoginScreen(navController: NavHostController, modifier: Modifier = Modifier,
+fun LoginScreen(navController: NavHostController,
                 onLogin: (String) -> Unit = {}) {
-    var username = remember {
+    val username = remember {
         mutableStateOf("")
     }
-    var password = remember {
+    val password = remember {
         mutableStateOf("")
     }
     val context = LocalContext.current
@@ -57,11 +58,13 @@ fun LoginScreen(navController: NavHostController, modifier: Modifier = Modifier,
             TopAppBar(colors = TopAppBarDefaults.topAppBarColors(
                 containerColor = Color(0xFFffc857)),
                 title = {
-                    Text(text = "Login")
+                    Text(text = "Save Your Login Info", style = TextStyle(color = Color.Black))
                 }
             )
         }
     ) {
+    Card(modifier = Modifier.fillMaxSize()
+        .background(Color.White)){
         Column(
             modifier = Modifier.fillMaxSize(),
             verticalArrangement = Arrangement.Center,
@@ -99,5 +102,6 @@ fun LoginScreen(navController: NavHostController, modifier: Modifier = Modifier,
                 Text(text = "Save Data")
             }
         }
+    }
     }
 }
